@@ -1,11 +1,21 @@
-const express = require("express")
+import express from "express";
+import dotenv from "dotenv";
 
 // Create express server
 const app = express();
 
+dotenv.config();
+
+// Create port number
+const PORT = process.env.PORT || 5001;
+
 // Test route
 app.get("/", (req, res) => {
     // root route http://localhost:5001/
-    res.send("Hello World");
+    res.send("Hello Mai");
 })
-app.listen(5001, () => console.log("server running on port 5001"));
+
+// Route for authentication
+
+
+app.listen(PORT, () => console.log(`Server Running on port ${PORT}`));
