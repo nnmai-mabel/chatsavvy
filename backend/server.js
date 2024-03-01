@@ -1,7 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 
 import authRoutes from "./routes/auth.routes.js";
+import messageRoutes from "./routes/message.routes.js";
 import connectToMongoDB from "./db/connectToMongoDB.js";
 
 // Create express server
@@ -13,8 +15,15 @@ dotenv.config();
 // Parse the incoming requests with JSON payloads (from req.body)
 app.use(express.json());
 
+// Parse the incoming cookies from req.cookies
+// Calling this middleware enables passing the cookie
+app.use(cookieParser());
+
 // Route for authentication
 app.use("/api/auth", authRoutes)
+
+// Route for sending message
+app.use("/api/messages", messageRoutes)
 
 // Create port number
 const PORT = process.env.PORT || 5001;
