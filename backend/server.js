@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 
 import authRoutes from "./routes/auth.routes.js";
+import messageRoutes from "./routes/message.routes.js";
 import connectToMongoDB from "./db/connectToMongoDB.js";
 
 // Create express server
@@ -15,6 +16,9 @@ app.use(express.json());
 
 // Route for authentication
 app.use("/api/auth", authRoutes)
+
+// Route for sending message
+app.use("/api/messages", messageRoutes)
 
 // Create port number
 const PORT = process.env.PORT || 5001;
