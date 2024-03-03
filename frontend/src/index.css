@@ -8,3 +8,22 @@ body {
   background-size: cover;
   background-position: center;
 }
+
+/* dark mode scrollbar */
+
+::-webkit-scrollbar{
+  width: 8px;
+}
+
+::-webkit-scrollbar-track{
+  background: #c1c0c0;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #173f95;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background: #0b2d76;
+}
