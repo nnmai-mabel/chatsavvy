@@ -76,7 +76,7 @@ export const login = async (req, res) => {
 
         // Compare password from the input, and the password user has in the database
         // Compare with an empty string if user not exist
-        const isPasswordCorrect = bcrypt.compare(password, user?.password || "");
+        const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
         if(!user || !isPasswordCorrect){
             return res.status(400).json({error: "Invalid username or password"})
         }
