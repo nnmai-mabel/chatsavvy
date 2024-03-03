@@ -1,5 +1,6 @@
 import { useState } from "react"
 import useConversation from '../zustand/useConversation'
+import toast from "react-hot-toast"
 
 const useSendMessage = () => {
     const [loading, setLoading] = useState(false)
@@ -22,7 +23,9 @@ const useSendMessage = () => {
             // ...messages mean all previous messages
             setMessages([...messages, data])
         } catch (error) {
-            
+            toast.error(error.message)
+        } finally {
+            setLoading(false)
         }
     }
   return {sendMessage, loading}
