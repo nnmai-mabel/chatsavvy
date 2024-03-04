@@ -7,9 +7,12 @@ import messageRoutes from "./routes/message.routes.js";
 import userRoutes from "./routes/user.routes.js";
 
 import connectToMongoDB from "./db/connectToMongoDB.js";
+import {app, server} from './socket/socket.js'
 
 // Create express server
-const app = express();
+// const app = express();
+
+const PORT = process.env.PORT || 5001
 
 dotenv.config();
 
@@ -31,7 +34,7 @@ app.use("/api/messages", messageRoutes)
 app.use("/api/users", userRoutes)
 
 // Create port number
-const PORT = process.env.PORT || 5001;
+// const PORT = process.env.PORT || 5001;
 
 // Test route
 // app.get("/", (req, res) => {
@@ -39,7 +42,7 @@ const PORT = process.env.PORT || 5001;
 //     res.send("Hello Mai");
 // })
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     connectToMongoDB();
     console.log(`Server Running on port ${PORT}`)
 });
