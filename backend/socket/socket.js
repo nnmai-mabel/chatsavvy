@@ -13,6 +13,11 @@ const io = new Server(server, {
     }
 })
 
+// Give user socket id when parse receiverId
+export const  getReceiverSocketId = (receiverId) => {
+    return userSocketMap[receiverId]
+}
+
 const userSocketMap = {} // {userId: socketId}
 
 // Listen for connection
