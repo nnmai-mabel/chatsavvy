@@ -1,3 +1,4 @@
+import path from 'path'
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
@@ -13,6 +14,8 @@ import {app, server} from './socket/socket.js'
 // const app = express();
 
 const PORT = process.env.PORT || 5001
+
+const __dirname = path.resolve()
 
 dotenv.config();
 
@@ -32,6 +35,14 @@ app.use("/api/messages", messageRoutes)
 
 // Route for getting users
 app.use("/api/users", userRoutes)
+
+// Middle layer from express
+app.use(express.static(path.join(__dirname, "/frontend/dist")))
+
+// All other routes run into index.html under dist inside frontend
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"))
+})
 
 // Create port number
 // const PORT = process.env.PORT || 5001;
