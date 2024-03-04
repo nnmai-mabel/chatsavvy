@@ -15,7 +15,16 @@ export const SocketContextProvider = ({children}) => {
 
     useEffect(() => {
         if(authUser){
-            const socket = io("http://localhost:5001", {
+
+            // Local deployment
+            // const socket = io("http://localhost:5001", {
+            //     query:{
+            //         userId: authUser._id
+            //     }
+            // })
+
+            // After deployed to render
+            const socket = io("https://chatsavvy.onrender.com/", {
                 query:{
                     userId: authUser._id
                 }
