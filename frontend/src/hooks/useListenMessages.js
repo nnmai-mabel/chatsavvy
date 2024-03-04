@@ -8,6 +8,8 @@ const useListenMessages = () => {
 
   useEffect(() => {
     socket?.on("newMessage", (newMessage) => {
+        // New message shake
+        newMessage.shouldShake = true
 
         // Add all previous messages, new message at the end
         setMessages([...messages, newMessage])
