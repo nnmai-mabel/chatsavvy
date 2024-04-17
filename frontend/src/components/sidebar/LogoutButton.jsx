@@ -1,5 +1,6 @@
 import {RiLogoutCircleLine} from 'react-icons/ri'
 import useLogout from '../../hooks/useLogout'
+import { Link } from 'react-router-dom';
 
 const LogoutButton = () => {
   const {loading, logout} = useLogout()
@@ -11,7 +12,7 @@ const LogoutButton = () => {
       ) : (
         <span className='loading loading-spinner'></span>
       )}
-        
+      <Link to="https://github.com/nnmai-mabel/chatsavvy">Source code</Link> 
     </div>
   )
 }
